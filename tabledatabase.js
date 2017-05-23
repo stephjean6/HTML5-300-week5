@@ -47,3 +47,27 @@ function submitForm ( event ) {
   populatingTbody ( );
 }
 
+//save to local storage
+
+var SETTINGS_KEY = "LSS_Settings";
+
+var settings = getSettings();
+
+function getSettings() {
+  var settingsString = localStorage[ SETTINGS_KEY];
+  if (s) {
+    return JSON.parse (s);
+  }else {
+    return{}
+  }
+}
+
+function saveSettings(){
+  localStorage[ SETTINGS_KEY] =JSON.stringify(settings);
+}
+  function updateSettings(evt){
+    evt.preventDefault();
+    settings.person = $('#name').val();
+    saveSettings();
+    showHellowPage();
+}
